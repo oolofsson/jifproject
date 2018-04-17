@@ -1,0 +1,34 @@
+package project02;
+
+public class  Node[principal P]  {
+	public principal {P->P}user; 
+	public int {P->P} distance;
+	public Node[P] {P->P} next;
+
+	public Node{P->P}(){
+		this.user = null;
+		this.distance = 0;
+		this.next = null;
+	}
+
+	public Node{P->P}(principal {P->P} user, int {P->P} distance) {
+		this.user = user;
+		this.distance = distance;
+		this.next = null;
+	}
+
+	public void add{P->P}(Node[P] {P->P}  node)  {
+		this.next = node;
+	}
+	// If a is null, returns b, otherwise appends b to a and returns a
+	public static Node[P] append{P->P}(Node[P] {P->P} a, Node[P] {P->P} b) {
+		if(a == null){
+			return b;
+		}else{
+			a.add(b);
+			return a;
+		}
+		
+	} 
+	
+}
