@@ -56,33 +56,32 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 		// look if bobs and chucks positions is near, with help of authority and declassification
 		// if distanceTo <= 100
 		NodeAlice nAlice = new NodeAlice();
-		declassify({Alice->Alice} to {_->_}){
-			double bobX = getBobPositionX();
-			double bobY = getBobPositionY();
-			double bobDistance = (bobX - getAlicePositionX())*(bobX - getAlicePositionX()) 
+		// declassify({Alice->Alice;Bob->Bob;Chuck->Chuck} to {Alice->Alice}){
+		double bobX = getBobPositionX();
+		double bobY = getBobPositionY();
+		double bobDistance = (bobX - getAlicePositionX())*(bobX - getAlicePositionX()) 
 							+ (bobY - getAlicePositionY())*(bobY - getAlicePositionY());
-			
-			if(bobDistance <= 100){
-				nAlice = new NodeAlice(Bob, (int) bobDistance);
-			}
-			double chuckX = getChuckPositionX();
-			double chuckY = getChuckPositionY();
-			double chuckDistance = (chuckX - getAlicePositionX())*(chuckX - getAlicePositionX()) 
+	
+		if(bobDistance <= 100){
+			nAlice = new NodeAlice(Bob, (int) bobDistance);
+		}
+		double chuckX = getChuckPositionX();
+		double chuckY = getChuckPositionY();
+		double chuckDistance = (chuckX - getAlicePositionX())*(chuckX - getAlicePositionX()) 
 								+ (chuckY - getAlicePositionY())*(chuckY - getAlicePositionY());
-			if(chuckDistance <= 100){
-				if(nAlice == null){
-					nAlice = new NodeAlice(Bob, (int) chuckDistance);
-				}else{
-					nAlice.add(new NodeAlice(Bob, (int) chuckDistance));
-				}
+		if(chuckDistance <= 100){
+			if(nAlice == null){
+				nAlice = new NodeAlice(Bob, (int) chuckDistance);
+			}else{
+				nAlice.add(new NodeAlice(Bob, (int) chuckDistance));
 			}
-
-		};
+		}
+		
 		NodeAlice r = declassify(
 			nAlice,
 			{Chuck→Chuck; Alice→Alice; Bob→Bob} to {Alice->Alice}
 		);
-		return r;
+		return nAlice;
 	}
 	
 	private NodeAlice {Alice->Alice} aliceLikes;
@@ -116,8 +115,7 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 	
 	private boolean {Alice->Alice} isAliceInBobLikes{Alice->Alice}() : {Alice->Alice} where authority(Alice,Bob)  {
 		boolean exists = false;
-		declassify({Alice->Alice} to {_->_}){
-			
+
 			NodeBob bobLike = new NodeBob();
 			if(bobLikes != null){
 				bobLike = bobLikes;
@@ -128,7 +126,6 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 				}
 				bobLike = bobLike.next;
 			}
-		};
 		boolean r = declassify(
 			exists,
 			{Alice->Alice;Bob->Bob} to {Alice->Alice}
@@ -138,19 +135,17 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 	
 	public boolean {Alice->Alice} isAliceInChuckLikes{Alice->Alice}() : {Alice->Alice} where authority(Alice,Chuck) {
 		boolean exists = false;
-		declassify({Alice->Alice} to {_->_}){
-			NodeChuck chuckLike = new NodeChuck();
+		NodeChuck chuckLike = new NodeChuck();
 			
-			if(chuckLikes != null){
-				chuckLike = chuckLikes;
+		if(chuckLikes != null){
+			chuckLike = chuckLikes;
+		}
+		while(chuckLike != null){
+			if(chuckLike.user == Alice){
+				exists = true;
 			}
-			while(chuckLike != null){
-				if(chuckLike.user == Alice){
-					exists = true;
-				}
-				chuckLike = chuckLike.next;
-			}
-		};
+			chuckLike = chuckLike.next;
+		}
 		boolean r = declassify(
 			exists,
 			{Alice->Alice;Chuck->Chuck} to {Alice->Alice}
