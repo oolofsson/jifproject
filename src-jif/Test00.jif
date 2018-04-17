@@ -1,0 +1,7 @@
+public class Text00 {
+    public static void main(String [] args) {
+        int {Alice->Alice}x = 0;
+        x = x+3;
+        return;
+    }
+}

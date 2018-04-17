@@ -1,0 +1,33 @@
+package project;
+
+public class  NodeChuck  {
+	public principal {Chuck->Chuck} user; 
+	public int {Chuck->Chuck} distance;
+	public NodeChuck {Chuck->Chuck} next;
+
+	public NodeChuck(){
+		this.user = null;
+		this.distance = 0;
+		this.next = null;
+	}
+
+	public NodeChuck(principal user, int distance) {
+		this.user = user;
+    		this.distance = distance;
+    		this.next = null;
+	}
+
+	public void add(NodeChuck node)  {
+		this.next = node;
+	}
+	
+	// If a is null, returns b, otherwise appends b to a and returns a
+	public static NodeChuck append(NodeChuck a, NodeChuck b) {
+		if(a == null){
+			return b;
+		}else{
+			a.add(b);
+			return a;
+		}
+	} 
+}

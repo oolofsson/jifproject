@@ -1,0 +1,33 @@
+package project;
+
+public class  NodeBob  {
+	public principal {Bob->Bob} user; 
+	public int {Bob->Bob} distance;
+	public NodeBob {Bob->Bob} next;
+
+	public NodeBob(){
+		this.user = null;
+		this.distance = 0;
+		this.next = null;
+	}
+	
+	public NodeBob(principal user, int distance) {
+		this.user = user;
+    		this.distance = distance;
+    		this.next = null;
+	}
+
+	public void add(NodeBob node)  {
+		this.next = node;
+	}
+	
+	// If a is null, returns b, otherwise appends b to a and returns a
+	public static NodeBob append(NodeBob a, NodeBob b) {
+		if(a == null){
+			return b;
+		}else{
+			a.add(b);
+			return a;
+		}
+	} 
+}
