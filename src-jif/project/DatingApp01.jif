@@ -1,6 +1,5 @@
 package project;
 
-import java.lang.*;
 
 public class DatingApp01 authority (Bob,Chuck,Alice) {
 	private double {Alice->Alice} alicePositionX;
@@ -10,6 +9,7 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 	private double {Bob->Bob} bobPositionX;
 	private double {Bob->Bob} bobPositionY;
 	private String {Bob->Bob} bobPhone;
+	
 	
 	private double {Chuck->Chuck} chuckPositionX;
 	private double {Chuck->Chuck} chuckPositionY;
@@ -65,6 +65,7 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 			if(bobDistance <= 100){
 				nAlice = new NodeAlice(Bob, (int) bobDistance);
 			}
+			
 			double chuckX = getChuckPositionX();
 			double chuckY = getChuckPositionY();
 			double chuckDistance = (chuckX - getAlicePositionX())*(chuckX - getAlicePositionX()) 
@@ -151,6 +152,7 @@ public class DatingApp01 authority (Bob,Chuck,Alice) {
 				chuckLike = chuckLike.next;
 			}
 		};
+		
 		boolean r = declassify(
 			exists,
 			{Alice->Alice;Chuck->Chuck} to {Alice->Alice}

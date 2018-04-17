@@ -5,24 +5,24 @@ public class  NodeBob  {
 	public int {Bob->Bob} distance;
 	public NodeBob {Bob->Bob} next;
 
-	public NodeBob(){
+	public NodeBob{Bob->Bob}(){
 		this.user = null;
 		this.distance = 0;
 		this.next = null;
 	}
 	
-	public NodeBob(principal user, int distance) {
+	public NodeBob{Bob->Bob}(principal {Bob->Bob} user, int {Bob->Bob} distance) {
 		this.user = user;
     		this.distance = distance;
     		this.next = null;
 	}
 
-	public void add(NodeBob node)  {
+	public void add{Bob->Bob}(NodeBob {Bob->Bob} node)  {
 		this.next = node;
 	}
 	
 	// If a is null, returns b, otherwise appends b to a and returns a
-	public static NodeBob append(NodeBob a, NodeBob b) {
+	public static NodeBob append{Bob->Bob}(NodeBob {Bob->Bob} a, NodeBob {Bob->Bob} b) {
 		if(a == null){
 			return b;
 		}else{
