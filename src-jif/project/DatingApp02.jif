@@ -1,0 +1,66 @@
+package project02;
+
+public class DatingApp02 authority (Alice,Bob,Chuck) {
+	private User[Alice] aliceData;
+	private Node[Alice] aliceLikes;
+	private User[Bob] bobData;
+	private Node[Bob] bobLikes;
+	private User[Chuck] chuckData;
+	private Node[Chuck] chuckLikes;
+
+	public void updateUser{P->P}(principal {_->_}P, double {P->P} x, double {P->P} y, String {P->P} phone) where caller(P) {
+		if (Alice actsfor P) {
+			try{
+			aliceData.positionX = x;
+			aliceData.positionY = y;
+			aliceData.phone = phone;
+			}catch(NullPointerException e){}
+			return;
+		} else if (Bob actsfor P) {
+			try{
+			bobData.positionX = x;
+			bobData.positionY = y;
+			bobData.phone = phone;
+			}catch(NullPointerException e){}
+			return;
+		} else if (Chuck actsfor P) {
+			try{
+			chuckData.positionX = x;
+			chuckData.positionY = y;
+			chuckData.phone = phone;
+			}catch(NullPointerException e){}
+			return;
+		}
+	}
+	public int {P1->P1;P2->P2} getSquaredDistance{P1->P1;P2->P2}(principal {P1->P1}P1, principal {P1->P1}P2,
+			User[P1] {P1->P1}data1, User[P2]{P1->P1} data2) where caller (P1,P2) {
+			try{
+			double res = (data1.positionX - data2.positionX) * (data1.positionX - data2.positionX) + (data1.positionY - data2.positionY) * (data1.positionY - data2.positionY);
+			return (int)res;
+			} catch(Exception e){
+				return -1;
+			}
+			
+			
+	} 
+/*
+	public Node[P] findNeighbours (principal {_->_}P) where authority (Alice, Bob, Chuck) {
+		NodeAlice nAlice = new NodeAlice();
+		double bobDistance = declassify((bobPositionX - alicePositionX)*(bobPositionX - alicePositionX) 
+							+ (bobPositionY - alicePositionY)*(bobPositionY - alicePositionY), {Bob->Bob;Alice->Alice} to {Alice->Alice});
+		if(bobDistance <= 100){
+			nAlice = new NodeAlice(Bob, (int) bobDistance);
+		}
+		double chuckDistance = declassify((chuckPositionX - alicePositionX)*(chuckPositionX - alicePositionX) 
+								+ (chuckPositionY - alicePositionY)*(chuckPositionY - alicePositionY), {Chuck->Chuck;Alice->Alice} to {Alice->Alice});
+		if(chuckDistance <= 100){
+			if(nAlice == null){
+				nAlice = new NodeAlice(Bob, (int) chuckDistance);
+			}else{
+				nAlice.add(new NodeAlice(Bob, (int) chuckDistance));
+			}
+		}
+		return nAlice;
+	}
+	*/
+}
