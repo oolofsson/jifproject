@@ -5,23 +5,23 @@ public class NodeAlice {
 	public int {Alice->Alice} distance;
 	public NodeAlice {Alice->Alice} next;
 	
-	public NodeAlice(){
+	public NodeAlice{Alice->Alice}(){
 		this.user = null;
 		this.distance = 0;
 		this.next = null;
 	}
-	public NodeAlice(principal user, int distance) {
+	public NodeAlice{Alice->Alice}(principal {Alice->Alice} user, int {Alice->Alice} distance) {
 		this.user = user;
     		this.distance = distance;
     		this.next = null;
 	}
 
-	public void add(NodeAlice node)  {
+	public void add{Alice->Alice}(NodeAlice {Alice->Alice}  node)  {
 		 this.next = node;
 	}
 	
 	// If a is null, returns b, otherwise appends b to a and returns a
-	public static NodeAlice append(NodeAlice a, NodeAlice b) {
+	public static NodeAlice append{Alice->Alice}(NodeAlice{Alice->Alice} a, NodeAlice{Alice->Alice} b) {
 		if(a == null){
 			return b;
 		}else{

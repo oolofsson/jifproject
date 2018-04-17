@@ -5,24 +5,24 @@ public class  NodeChuck  {
 	public int {Chuck->Chuck} distance;
 	public NodeChuck {Chuck->Chuck} next;
 
-	public NodeChuck(){
+	public NodeChuck{Chuck->Chuck}(){
 		this.user = null;
 		this.distance = 0;
 		this.next = null;
 	}
 
-	public NodeChuck(principal user, int distance) {
+	public NodeChuck{Chuck->Chuck}(principal {Chuck->Chuck} user, int {Chuck->Chuck} distance) {
 		this.user = user;
     		this.distance = distance;
     		this.next = null;
 	}
 
-	public void add(NodeChuck node)  {
+	public void add{Chuck->Chuck}(NodeChuck {Chuck->Chuck} node)  {
 		this.next = node;
 	}
 	
 	// If a is null, returns b, otherwise appends b to a and returns a
-	public static NodeChuck append(NodeChuck a, NodeChuck b) {
+	public static NodeChuck append{Chuck->Chuck}(NodeChuck {Chuck->Chuck} a, NodeChuck {Chuck->Chuck} b) {
 		if(a == null){
 			return b;
 		}else{
