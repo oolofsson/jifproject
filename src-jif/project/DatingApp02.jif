@@ -32,35 +32,32 @@ public class DatingApp02 authority (Alice,Bob,Chuck) {
 			return;
 		}
 	}
-	public int {P1->P1;P2->P2} getSquaredDistance{P1->P1;P2->P2}(principal {P1->P1}P1, principal {P1->P1}P2,
-			User[P1] {P1->P1}data1, User[P2]{P1->P1} data2) where caller (P1,P2) {
-			try{
-			double res = (data1.positionX - data2.positionX) * (data1.positionX - data2.positionX) + (data1.positionY - data2.positionY) * (data1.positionY - data2.positionY);
-			return (int)res;
-			} catch(Exception e){
+	public int {P1->P1} getSquaredDistance{P1->P1}(principal {P1->P1}P1, principal {P1->P1}P2,
+			User[P1] {P1->P1}data1, User[P2]{P1->P1} data2) where caller (P1) {
+			
+			User[P1]{P1->P1} usr;
+			declassify({data2;P1->P1} to {P1->P1}) {
+				usr = declassify(data2, {data2;P1->P1} to {P1->P1});
+			}
+			try {
+				double res = (data1.positionX - usr.positionX) * (data1.positionX - usr.positionX) + (data1.positionY - usr.positionY) * (data1.positionY - usr.positionY);
+				return (int)res;
+			} catch (Exception e) {
 				return -1;
 			}
-			
-			
 	} 
 /*
-	public Node[P] findNeighbours (principal {_->_}P) where authority (Alice, Bob, Chuck) {
-		NodeAlice nAlice = new NodeAlice();
-		double bobDistance = declassify((bobPositionX - alicePositionX)*(bobPositionX - alicePositionX) 
-							+ (bobPositionY - alicePositionY)*(bobPositionY - alicePositionY), {Bob->Bob;Alice->Alice} to {Alice->Alice});
-		if(bobDistance <= 100){
-			nAlice = new NodeAlice(Bob, (int) bobDistance);
+	public Node[P] findNeighbours {P->P} (principal {_->_}P) where authority (Alice, Bob, Chuck) {
+		User[P] originUser;
+		Principal neighbour1;
+		Principal neighbour2;
+		if (Bob actsfor P) {
+			originUser = bobData;
+			neighbour1 = Alice;
+			neighbour2 = Chuck;
 		}
-		double chuckDistance = declassify((chuckPositionX - alicePositionX)*(chuckPositionX - alicePositionX) 
-								+ (chuckPositionY - alicePositionY)*(chuckPositionY - alicePositionY), {Chuck->Chuck;Alice->Alice} to {Alice->Alice});
-		if(chuckDistance <= 100){
-			if(nAlice == null){
-				nAlice = new NodeAlice(Bob, (int) chuckDistance);
-			}else{
-				nAlice.add(new NodeAlice(Bob, (int) chuckDistance));
-			}
-		}
-		return nAlice;
+		int dist1 = getSquaredDistance(P, Alice, 
+		return null;
 	}
 	*/
 }
